@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #ebebeb;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .signup-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      background-color: #ebebeb;
+    }
+
+    .signup-card {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 500px;
+      padding: 24px;
+    }
+
+    .signup-card h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0a2a66; /* azul marino */
+      margin-bottom: 18px;
+      border-bottom: 1px solid #d6d6d6;
+      padding-bottom: 8px;
+      text-align: center;
+    }
+
+    .form-control:focus {
+      border-color: #0a2a66;
+      box-shadow: 0 0 0 0.2rem rgba(10,42,102,0.25);
+    }
+
+    .btn-signup {
+      background-color: #0a2a66;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 12px;
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn-signup:hover {
+      background-color: #0d3a8a;
+    }
+
+    .material-icons {
+      font-size: 1.2rem;
+      color: #0a2a66;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-wrapper">
+    <div class="signup-card">
+      <h2>Registro de usuario</h2>
+      <div id="alerta"></div>
+      <form id="signupForm">
+        
+        <!-- Nombre de usuario -->
+        <div class="mb-3">
+          <label for="nombre_usuario" class="form-label">
+            <i class="material-icons">person</i> Nombre de usuario
+          </label>
+          <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" required>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="mb-3">
+          <label for="password" class="form-label">
+            <i class="material-icons">lock</i> Contraseña
+          </label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <!-- Nombre personal -->
+        <div class="mb-3">
+          <label for="nombre_personal" class="form-label">
+            <i class="material-icons">badge</i> Nombre personal
+          </label>
+          <input type="text" class="form-control" id="nombre_personal" name="nombre_personal" required>
+        </div>
+
+        <!-- Género -->
+        <div class="mb-3">
+          <label for="genero" class="form-label">
+            <i class="material-icons">wc</i> Género
+          </label>
+          <select class="form-control" id="genero" name="genero" required>
+            <option value="">Seleccione el género...</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+
+        <!-- Fecha de nacimiento -->
+        <div class="mb-3">
+          <label for="fecha_nacimiento" class="form-label">
+            <i class="material-icons">calendar_today</i> Fecha de nacimiento
+          </label>
+          <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
+        </div>
+
+        <!-- Correo electrónico -->
+        <div class="mb-3">
+          <label for="correo_electronico" class="form-label">
+            <i class="material-icons">email</i> Correo electrónico
+          </label>
+          <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" required>
+        </div>
+
+        <!-- Checkbox de aceptación -->
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="acepto" required>
+          <label class="form-check-label" for="acepto">
+            Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#terminosModal">Términos y Condiciones</a> y el 
+            <a href="#" data-bs-toggle="modal" data-bs-target="#privacidadModal">Aviso de Privacidad</a>
+          </label>
+        </div>
+
+        <!-- Modal Términos y Condiciones -->
+        <div class="modal fade" id="terminosModal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Términos y Condiciones</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  El uso de esta aplicación está permitido únicamente para fines académicos y personales. 
+                  El usuario se compromete a proporcionar información veraz y a no realizar un uso indebido 
+                  de la plataforma. La aplicación no se hace responsable por fallos técnicos, interrupciones 
+                  del servicio o uso incorrecto de la información. Al registrarse, el usuario acepta estas 
+                  condiciones y reconoce las limitaciones de responsabilidad establecidas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Aviso de Privacidad -->
+        <div class="modal fade" id="privacidadModal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Aviso de Privacidad</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Esta aplicación recolecta datos personales como nombre, correo electrónico y fecha de nacimiento 
+                  con el propósito de gestionar el registro y acceso de usuarios. La información se utiliza únicamente 
+                  para fines académicos y administrativos, aplicando medidas de protección como conexión segura (HTTPS) 
+                  y control de acceso restringido. Tus datos no serán compartidos con terceros sin tu consentimiento.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón grande de registro -->
+        <button type="submit" class="btn-signup">Registrarse</button>
+
+        <!-- Apartado de login -->
+        <div class="mt-3 text-center">
+          <p>¿Ya tienes una cuenta? 
+            <a href="/login" class="link-primary">Inicia sesión</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const form = document.getElementById('signupForm');
+    const alerta = document.getElementById('alerta');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        nombre_usuario: document.getElementById('nombre_usuario').value,
+        password: document.getElementById('password').value,
+        nombre_personal: document.getElementById('nombre_personal').value,
+        genero: document.getElementById('genero').value,
+        fecha_nacimiento: document.getElementById('fecha_nacimiento').value,
+        correo_electronico: document.getElementById('correo_electronico').value
+      };
+
+      try {
+        const res = await fetch('/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (res.ok && result.type === 'success') {
+          alerta.innerHTML = `<div class="alert alert-success">${result.msg}</div>`;
+
+          // Limpiar campos
+          form.reset();
+
+          // Redirigir al login después de 2 segundos
+          setTimeout(() => {
+            window.location.href = '/iniciarsesion.html';
+          }, 2000);
+        } else {
+          alerta.innerHTML = `<div class="alert alert-danger">${result.msg}</div>`;
+        }
+      } catch (err) {
+        alerta.innerHTML = `<div class="alert alert-danger">Error de conexión con el servidor</div>`;
+      }
+    });
+  </script>
+
+</body>
+</html>

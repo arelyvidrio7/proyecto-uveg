@@ -1,0 +1,130 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Navbar superior */
+.topbar {
+    width: calc(100% - 250px);
+    background-color: #0a2a66;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 250px;
+    z-index: 1100;
+    transition: left 0.3s ease, width 0.3s ease;
+}
+
+.topbar .material-icons {
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: #f0f0f0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+    box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+/* Links del menú */
+.sidebar-nav {
+    flex: 1;
+    padding: 70px 10px 20px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    color: #0a2a66;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+    background-color: #e0e0e0;
+}
+
+/* Botón toggle */
+.toggle-btn {
+    position: fixed;
+    top: 50px;
+    left: 260px;
+    background-color: #0a2a66;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, left 0.3s ease;
+    z-index: 1200;
+}
+
+.toggle-btn:hover {
+    background-color: #0d3a8a;
+}
+
+/* Ajustes cuando el sidebar está oculto */
+.sidebar.hidden ~ .topbar {
+    left: 0;
+    width: 100%;
+}
+
+.sidebar.hidden ~ .toggle-btn {
+    left: 10px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 2000;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .topbar {
+        left: 0;
+        width: 100%;
+    }
+
+    .toggle-btn {
+        left: 10px;
+    }
+
+    .sidebar.show ~ .toggle-btn {
+        left: 260px;
+    }
+}
